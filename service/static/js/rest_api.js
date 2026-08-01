@@ -209,7 +209,7 @@ $(function () {
             }
             queryString += 'available=' + available
         }
-        if (category) {
+        if (category && category !== 'UNKNOWN') {
             if (queryString.length > 0) {
                 queryString += '&'  // add separator
             }
@@ -220,6 +220,7 @@ $(function () {
 
         let ajax = $.ajax({
             type: "GET",
+            cache: false,
             url: `/products?${queryString}`,
             contentType: "application/json",
             data: ''
